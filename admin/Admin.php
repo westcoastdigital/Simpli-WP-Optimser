@@ -274,21 +274,23 @@ class SimpliOptimiser_Admin
 
                 <p><?php printf(__('Expired transients: %d', 'simpliweb'), $expired_count); ?></p>
 
-                <form method="post">
-                    <?php wp_nonce_field('simpli_delete_transients'); ?>
-                    <button type="submit" name="delete_transients" value="1" onclick="return confirm('Delete all expired transients?');" class="button">
-                        <?php _e('Delete Expired Transients', 'simpliweb'); ?>
-                    </button>
-                    <input type="hidden" name="delete_expired" value="1">
-                </form>
+                <div id="transient-forms">
+                    <form method="post">
+                        <?php wp_nonce_field('simpli_delete_transients'); ?>
+                        <button type="submit" name="delete_transients" value="1" onclick="return confirm('Delete all expired transients?');" class="button">
+                            <?php _e('Delete Expired Transients', 'simpliweb'); ?>
+                        </button>
+                        <input type="hidden" name="delete_expired" value="1">
+                    </form>
 
-                <form method="post" style="display: inline-block; margin-left: 10px;">
-                    <?php wp_nonce_field('simpli_delete_transients'); ?>
-                    <button type="submit" name="delete_transients" value="1" onclick="return confirm('Delete ALL transients? This may temporarily slow down your site.');" class="button button-secondary">
-                        <?php _e('Delete All Transients', 'simpliweb'); ?>
-                    </button>
-                    <input type="hidden" name="delete_all" value="1">
-                </form>
+                    <form method="post" style="display: inline-block; margin-left: 10px;">
+                        <?php wp_nonce_field('simpli_delete_transients'); ?>
+                        <button type="submit" name="delete_transients" value="1" onclick="return confirm('Delete ALL transients? This may temporarily slow down your site.');" class="button button-secondary">
+                            <?php _e('Delete All Transients', 'simpliweb'); ?>
+                        </button>
+                        <input type="hidden" name="delete_all" value="1">
+                    </form>
+                </div>
             </div>
 
             <h2><?php _e('Transient List (First 500)', 'simpliweb'); ?></h2>
