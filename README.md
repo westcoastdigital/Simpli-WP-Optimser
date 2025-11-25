@@ -51,6 +51,24 @@ Custom image size registered for plugin interface.
 - Automatically generated when images are uploaded
 - Helps maintain consistent thumbnail display across features
 
+## Screenshots
+
+### Posts Relationships
+![Posts Relationships](screenshots/posts.png)
+
+### Transient Manager
+![Transient Manager](screenshots/transients.png)
+
+### Shortcode Finder
+![Shortcode Finder](screenshots/shortcodes.png)
+
+### Media Library Source Tracker
+![Media Library Source Tracker](screenshots/media.png)
+
+### Large Image Size
+![Large Image Size](screenshots/images.png)
+
+
 ## Installation
 
 ### Method 1: Upload via WordPress Admin
