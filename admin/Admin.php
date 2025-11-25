@@ -761,19 +761,43 @@ class SimpliOptimiser_Admin
                         <div class="tablenav top">
                             <div class="tablenav-pages">
                                 <span class="displaying-num">
-                                    <?php printf(__('%s items', 'simpliweb'), number_format_i18n($total_images)); ?>
+                                    <?php printf(_n('%s item', '%s items', $total_images, 'simpliweb'), number_format_i18n($total_images)); ?>
                                 </span>
-                                <?php
-                                echo paginate_links(array(
-                                    'base' => add_query_arg('paged', '%#%', $base_url),
-                                    'format' => '',
-                                    'prev_text' => __('&laquo; Previous'),
-                                    'next_text' => __('Next &raquo;'),
-                                    'total' => $total_pages,
-                                    'current' => $current_page,
-                                    'type' => 'plain'
-                                ));
-                                ?>
+                                <span class="pagination-links">
+                                    <?php if ($current_page == 1): ?>
+                                        <span class="tablenav-pages-navspan button disabled" aria-hidden="true">«</span>
+                                        <span class="tablenav-pages-navspan button disabled" aria-hidden="true">‹</span>
+                                    <?php else: ?>
+                                        <a class="first-page button" href="<?php echo esc_url(add_query_arg('paged', 1, $base_url)); ?>">
+                                            <span class="screen-reader-text"><?php _e('First page'); ?></span>
+                                            <span aria-hidden="true">«</span>
+                                        </a>
+                                        <a class="prev-page button" href="<?php echo esc_url(add_query_arg('paged', max(1, $current_page - 1), $base_url)); ?>">
+                                            <span class="screen-reader-text"><?php _e('Previous page'); ?></span>
+                                            <span aria-hidden="true">‹</span>
+                                        </a>
+                                    <?php endif; ?>
+
+                                    <span class="paging-input">
+                                        <label for="current-page-selector" class="screen-reader-text"><?php _e('Current Page'); ?></label>
+                                        <input class="current-page" id="current-page-selector" type="text" name="paged" value="<?php echo esc_attr($current_page); ?>" size="<?php echo strlen($total_pages); ?>" aria-describedby="table-paging">
+                                        <span class="tablenav-paging-text"> <?php _e('of'); ?> <span class="total-pages"><?php echo number_format_i18n($total_pages); ?></span></span>
+                                    </span>
+
+                                    <?php if ($current_page == $total_pages): ?>
+                                        <span class="tablenav-pages-navspan button disabled" aria-hidden="true">›</span>
+                                        <span class="tablenav-pages-navspan button disabled" aria-hidden="true">»</span>
+                                    <?php else: ?>
+                                        <a class="next-page button" href="<?php echo esc_url(add_query_arg('paged', min($total_pages, $current_page + 1), $base_url)); ?>">
+                                            <span class="screen-reader-text"><?php _e('Next page'); ?></span>
+                                            <span aria-hidden="true">›</span>
+                                        </a>
+                                        <a class="last-page button" href="<?php echo esc_url(add_query_arg('paged', $total_pages, $base_url)); ?>">
+                                            <span class="screen-reader-text"><?php _e('Last page'); ?></span>
+                                            <span aria-hidden="true">»</span>
+                                        </a>
+                                    <?php endif; ?>
+                                </span>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -796,7 +820,7 @@ class SimpliOptimiser_Admin
                         <tbody>
                             <?php foreach ($paginated_images as $image): ?>
                                 <?php
-                                $image_thumbnail = wp_get_attachment_image_url($image['id'], 'simpli-thumbbail' );
+                                $image_thumbnail = wp_get_attachment_image_url($image['id'], 'simpli-thumbbail');
                                 ?>
                                 <tr>
                                     <td><?php echo esc_html($image['id']); ?></td>
@@ -873,22 +897,46 @@ class SimpliOptimiser_Admin
                     </table>
 
                     <?php if ($total_pages > 1): ?>
-                        <div class="tablenav bottom">
+                        <div class="tablenav top">
                             <div class="tablenav-pages">
                                 <span class="displaying-num">
-                                    <?php printf(__('%s items', 'simpliweb'), number_format_i18n($total_images)); ?>
+                                    <?php printf(_n('%s item', '%s items', $total_images, 'simpliweb'), number_format_i18n($total_images)); ?>
                                 </span>
-                                <?php
-                                echo paginate_links(array(
-                                    'base' => add_query_arg('paged', '%#%', $base_url),
-                                    'format' => '',
-                                    'prev_text' => __('&laquo; Previous'),
-                                    'next_text' => __('Next &raquo;'),
-                                    'total' => $total_pages,
-                                    'current' => $current_page,
-                                    'type' => 'plain'
-                                ));
-                                ?>
+                                <span class="pagination-links">
+                                    <?php if ($current_page == 1): ?>
+                                        <span class="tablenav-pages-navspan button disabled" aria-hidden="true">«</span>
+                                        <span class="tablenav-pages-navspan button disabled" aria-hidden="true">‹</span>
+                                    <?php else: ?>
+                                        <a class="first-page button" href="<?php echo esc_url(add_query_arg('paged', 1, $base_url)); ?>">
+                                            <span class="screen-reader-text"><?php _e('First page'); ?></span>
+                                            <span aria-hidden="true">«</span>
+                                        </a>
+                                        <a class="prev-page button" href="<?php echo esc_url(add_query_arg('paged', max(1, $current_page - 1), $base_url)); ?>">
+                                            <span class="screen-reader-text"><?php _e('Previous page'); ?></span>
+                                            <span aria-hidden="true">‹</span>
+                                        </a>
+                                    <?php endif; ?>
+
+                                    <span class="paging-input">
+                                        <label for="current-page-selector" class="screen-reader-text"><?php _e('Current Page'); ?></label>
+                                        <input class="current-page" id="current-page-selector" type="text" name="paged" value="<?php echo esc_attr($current_page); ?>" size="<?php echo strlen($total_pages); ?>" aria-describedby="table-paging">
+                                        <span class="tablenav-paging-text"> <?php _e('of'); ?> <span class="total-pages"><?php echo number_format_i18n($total_pages); ?></span></span>
+                                    </span>
+
+                                    <?php if ($current_page == $total_pages): ?>
+                                        <span class="tablenav-pages-navspan button disabled" aria-hidden="true">›</span>
+                                        <span class="tablenav-pages-navspan button disabled" aria-hidden="true">»</span>
+                                    <?php else: ?>
+                                        <a class="next-page button" href="<?php echo esc_url(add_query_arg('paged', min($total_pages, $current_page + 1), $base_url)); ?>">
+                                            <span class="screen-reader-text"><?php _e('Next page'); ?></span>
+                                            <span aria-hidden="true">›</span>
+                                        </a>
+                                        <a class="last-page button" href="<?php echo esc_url(add_query_arg('paged', $total_pages, $base_url)); ?>">
+                                            <span class="screen-reader-text"><?php _e('Last page'); ?></span>
+                                            <span aria-hidden="true">»</span>
+                                        </a>
+                                    <?php endif; ?>
+                                </span>
                             </div>
                         </div>
                     <?php endif; ?>
