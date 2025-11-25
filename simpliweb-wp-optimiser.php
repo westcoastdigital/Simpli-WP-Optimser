@@ -56,7 +56,7 @@ class SimpliOptimiser {
         if (is_admin()) {
             SimpliOptimiser_Admin::get_instance();
         }
-        
+        add_image_size( 'simpli-thumbbail', 50, 50, true );
         // Initialize media tracker
         add_action('add_attachment', array($this, 'track_media_source'));
         add_filter('manage_media_columns', array($this, 'add_media_column'));
