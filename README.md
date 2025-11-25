@@ -126,6 +126,13 @@ The plugin stores minimal data:
 - Media source tracking uses postmeta: `_upload_source_post`, `_upload_source_url`, `_upload_date`
 - No custom database tables are created
 
+## Image Sizes
+
+The plugin registers one custom image size:
+- **simpli-thumbbail**: 50x50px (hard cropped)
+  - Used for displaying media thumbnails in the plugin interface
+  - Automatically generated when images are uploaded
+
 ## Security
 
 All features include:
