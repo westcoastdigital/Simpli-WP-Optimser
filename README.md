@@ -1,6 +1,6 @@
 # WP Optimiser by SimpliWeb
 
-A comprehensive WordPress optimisation toolkit that helps you analyse, clean up, and maintain your WordPress site with four powerful features.
+A comprehensive WordPress optimisation toolkit that helps you analyse, clean up, and maintain your WordPress site with five powerful features.
 
 ## Features
 
@@ -42,6 +42,14 @@ Automatically track where media files are uploaded from.
 - Displays source post type
 - Shows last 200 uploads with tracking data
 - Helps identify and clean up unused media
+
+### 5. Large Image Size
+Custom image size registered for plugin interface.
+
+- Registers `simpli-thumbbail` image size (50x50px, hard cropped)
+- Used for displaying media thumbnails in plugin interface
+- Automatically generated when images are uploaded
+- Helps maintain consistent thumbnail display across features
 
 ## Installation
 
@@ -107,6 +115,15 @@ This feature works automatically once activated.
 3. Upload images as normal - source is tracked automatically
 4. View statistics on tracked vs untracked uploads
 
+### Large Image Size
+
+This feature works automatically once the plugin is activated.
+
+1. The `simpli-thumbbail` image size (50x50px) is registered on activation
+2. New images uploaded will automatically generate this thumbnail size
+3. The thumbnail is used throughout the Optimiser plugin interface
+4. No configuration or manual action required
+
 ## Requirements
 
 - WordPress 5.0 or higher
@@ -119,19 +136,13 @@ This feature works automatically once activated.
 - **Transient Manager**: Instant deletion. Site may be slightly slower after clearing all transients as they rebuild.
 - **Shortcode Finder**: Queries database once per page load. Results are always current (not cached).
 - **Media Library Source Tracker**: Minimal performance impact. Only fires on upload.
+- **Large Image Size**: No performance impact. Thumbnail generation happens during normal upload process.
 
 ## Database Storage
 
 The plugin stores minimal data:
 - Media source tracking uses postmeta: `_upload_source_post`, `_upload_source_url`, `_upload_date`
 - No custom database tables are created
-
-## Image Sizes
-
-The plugin registers one custom image size:
-- **simpli-thumbbail**: 50x50px (hard cropped)
-  - Used for displaying media thumbnails in the plugin interface
-  - Automatically generated when images are uploaded
 
 ## Security
 
@@ -171,6 +182,7 @@ Currently, no export feature is included. The data is displayed on-screen for re
 - Transient Manager with expired/all deletion options
 - Shortcode Finder with registration status
 - Media Library Source Tracker with automatic tracking
+- Large Image Size (simpli-thumbbail, 50x50px) for plugin interface
 - Admin interface with native WordPress styling
 - Security features (nonces, capability checks, escaping)
 
