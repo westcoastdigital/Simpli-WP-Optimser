@@ -68,7 +68,6 @@ Custom image size registered for plugin interface.
 ### Large Image Size
 ![Large Image Size](screenshots/images.png)
 
-
 ## Installation
 
 ### Method 1: Upload via WordPress Admin
