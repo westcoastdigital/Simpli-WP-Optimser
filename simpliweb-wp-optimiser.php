@@ -119,3 +119,7 @@ class SimpliOptimiser {
 
 // Initialize the plugin
 SimpliOptimiser::get_instance();
+
+add_action('admin_menu', function () {
+    remove_submenu_page('simpli-optimiser', 'simpli-optimiser');
+}, 999);
