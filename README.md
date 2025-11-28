@@ -1,6 +1,6 @@
 # WP Optimiser by SimpliWeb
 
-A comprehensive WordPress optimisation toolkit that helps you analyse, clean up, and maintain your WordPress site with five powerful features.
+A comprehensive WordPress optimisation toolkit that helps you analyse, clean up, and maintain your WordPress site with six powerful features.
 
 ## Features
 
@@ -84,6 +84,32 @@ Comprehensive image optimisation tools to reduce file sizes and manage your medi
 - **Quality Control**: Uses 82% JPEG quality (WordPress default) for optimal size/quality balance
 - **Thumbnail Generation**: Registers `simpli-thumbnail` size (50×50px) for plugin interface
 
+### 6. Gravity Forms Manager
+Comprehensive management and cleanup tools for Gravity Forms.
+
+#### Form Overview & Statistics
+- **Last Known Entries**: View all forms with detailed activity metrics
+- **Total Entries**: See entry count for each form at a glance
+- **Total Views**: Track how many times each form has been viewed
+- **Last Entry Date**: Monitor when forms last received submissions
+- **Last View Date**: Track when forms were last viewed by visitors
+- **Sortable Columns**: Click any column header to sort by ID, title, views, entries, or dates
+
+#### Bulk Entry Management
+- **Trash All Entries**: Move all entries for a form to trash with one click
+  - Entries can be restored from Gravity Forms trash
+  - Shows confirmation dialog before processing
+  - Displays count of entries trashed
+  - Safe alternative to permanent deletion
+- **View Entries**: Quick link to Gravity Forms entry list for each form
+- **Delete Form**: Permanently delete forms (with backup warning)
+
+#### Visual Interface
+- Color-coded entry counts with thousand separators for readability
+- Formatted dates (e.g., "November 28, 2025")
+- Real-time AJAX processing with progress indicators
+- Responsive table layout with WordPress native styling
+
 ## Screenshots
 
 ### Posts Relationships
@@ -106,6 +132,9 @@ Comprehensive image optimisation tools to reduce file sizes and manage your medi
 
 ### Regenerate Thumbnails Progress
 ![Regenerate Thumbnails](screenshots/thumbnails.png)
+
+### Gravity Forms Manager
+![Gravity Forms](screenshots/gravity.png)
 
 ## Installation
 
@@ -226,12 +255,52 @@ This works automatically for all new uploads:
 - Upload source is tracked for reference
 - No manual action required
 
+### Gravity Forms Manager
+
+**Note**: This feature requires Gravity Forms to be installed and activated.
+
+#### View Form Statistics
+
+1. Navigate to **Optimiser > Gravity Forms**
+2. View comprehensive statistics for all forms:
+   - Form ID and title
+   - Total views and last view date
+   - Total entries and last entry date
+3. Click any column header to sort (supports ascending/descending)
+
+#### Manage Form Entries
+
+**Trash All Entries** (Recommended for cleanup):
+1. Locate the form you want to clean up
+2. Click **Trash Entries** button
+3. Confirm the action in the dialog
+4. Wait for processing (button shows "Trashing...")
+5. Review success message showing count of trashed entries
+6. Entries can be restored from **Forms > Entries > Trash** if needed
+
+**View Entries**:
+- Click **View Entries** to jump directly to the Gravity Forms entry list
+
+**Delete Form** (Permanent):
+1. Click **Delete** button next to the form
+2. Confirm deletion (recommended: backup first - this cannot be undone)
+3. Form and all entries are permanently removed
+
+#### When to Use
+
+- **Before plugin updates**: Clear old test entries
+- **Data privacy compliance**: Remove outdated form submissions
+- **Database optimization**: Clean up forms with thousands of old entries
+- **Site maintenance**: Archive old forms and their data
+- **Testing cleanup**: Remove test submissions after development
+
 ## Requirements
 
 - WordPress 5.0 or higher
 - PHP 7.2 or higher
 - Administrator user role
 - PHP GD or Imagick extension (for image processing)
+- Gravity Forms plugin (for Gravity Forms Manager feature only)
 
 ## Performance Notes
 
@@ -244,6 +313,10 @@ This works automatically for all new uploads:
   - Batch operations use AJAX to prevent timeouts
   - Processing speed depends on image count and server resources
   - Recommended to run batch operations during low-traffic periods
+- **Gravity Forms Manager**:
+  - Statistics load instantly from Gravity Forms database tables
+  - Trash operations process entries individually (may take longer with thousands of entries)
+  - Real-time progress indicators during bulk operations
 
 ## Database Storage
 
@@ -256,6 +329,7 @@ The plugin stores minimal data:
   - `simpli_min_height`
   - `simpli_disable_scaled`
 - No custom database tables are created
+- Gravity Forms data uses existing Gravity Forms tables
 
 ## Security
 
@@ -266,6 +340,7 @@ All features include:
 - Prepared statements for database queries
 - Permission checks on all AJAX requests
 - File type validation for image operations
+- Confirmation dialogs for destructive actions
 
 ## Frequently Asked Questions
 
@@ -309,7 +384,33 @@ WordPress automatically creates `-scaled` versions of images larger than 2560px.
 
 When you upload an image larger than the "Auto-Resize Threshold", it's automatically resized before being saved to your media library. This happens transparently without user intervention.
 
+### Can I restore trashed Gravity Forms entries?
+
+Yes! Entries moved to trash using the **Trash Entries** button can be restored from **Forms > Entries > Trash** in Gravity Forms. They're not permanently deleted.
+
+### What's the difference between "Trash Entries" and "Delete"?
+
+- **Trash Entries**: Moves entries to trash (reversible, recommended)
+- **Delete**: Permanently removes the entire form and all entries (irreversible)
+
+### Why doesn't the Gravity Forms feature appear?
+
+The Gravity Forms Manager feature only appears if Gravity Forms plugin is installed and activated. It gracefully hides when Gravity Forms is not available.
+
+### Will trashing thousands of entries slow down my site?
+
+The trash operation processes entries individually, so it may take a minute or two for forms with thousands of entries. The button shows "Trashing..." during processing to indicate progress.
+
 ## Changelog
+
+### 1.2.0
+- Added Gravity Forms Manager feature
+- View form statistics (entries, views, dates)
+- Sortable table columns for all metrics
+- Bulk trash entries with reversible action
+- Form deletion with safety confirmation
+- Integration with Gravity Forms GFAPI
+- AJAX-powered operations with progress indicators
 
 ### 1.1.0
 - Added comprehensive image optimisation settings
