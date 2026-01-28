@@ -3,7 +3,7 @@
 Plugin Name:  WP Optimiser by SimpliWeb
 Plugin URI:   https://github.com/westcoastdigital/Simpli-WP-Optimser
 Description:  Comprehensive WordPress optimization toolkit with Post Relationship Visualiser, Transient Manager, Shortcode Finder, and Media Library Source Tracker.
-Version:      1.0.0
+Version:      1.1.0
 Author:       Jon Mather
 Author URI:   https://jonmather.au
 License:      GPL v2 or later
@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('SIMPLI_OPTIMISER_VERSION', '1.0.0');
+define('SIMPLI_OPTIMISER_VERSION', '1.1.0');
 define('SIMPLI_OPTIMISER_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('SIMPLI_OPTIMISER_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -42,7 +42,6 @@ if (class_exists('SimpliWeb_GitHub_Updater')) {
     
     $updater->initialize();
 }
-// ============================================
 
 /**
  * Main plugin class
